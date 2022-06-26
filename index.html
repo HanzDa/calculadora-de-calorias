@@ -45,8 +45,8 @@
     
     <main class="main-content">
       <section class="container">
-        <div class="row">
-          <div class="card col-lg-7 mt-3">
+        <div class="row py-4">
+          <div class="card col-lg-7">
             <form id="formulario-calculadora">
               <fieldset>
                 <legend class="h2 text-center">Calculadora de Calorías</legend>
@@ -77,7 +77,7 @@
                   </select>
                 </div>
                 
-                <section class="row m-2">
+                <section class="row m-2 h-100">
                   <span class="h6 p-0">Sexo</span>
                   <div class="form-check">
                     <input class="form-check-input" value="F" type="radio" name="genero" id="femenino" checked>
@@ -101,14 +101,18 @@
             </form>
           </div>
 
-          <article class="card col mt-3" id="resultado">
-            <div class="card-body d-flex flex-column justify-content-center align-items-center">
-              <h5 class="card-title">Total de calorías</h5>
+          <article class="card col" id="resultado">
+            <!-- <div class="d-flex justify-content-center align-items-center h-100">
+              <span class="alert alert-danger">este es un mensaje de error</span>
+            </div> -->
+            
+            <!-- <div class="card-body d-flex flex-column justify-content-center align-items-center">
+              <h5 class="card-title h2">Calorías requeridas</h5>
               <div class="mb-3 w-100">
-                <input type="number" id="total-calorias" class="form-control" disabled>
+                <input id="total-calorias" class="form-control text-center" style="font-size: 2rem" disabled>
               </div>
-              <button class="btn btn-primary w-50">Borrar</button>
-            </div>
+              <button class="btn btn-danger w-50">Borrar</button>
+            </div> -->
           </article>
         </div>
       </section>

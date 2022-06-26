@@ -4,20 +4,20 @@ const resultado = document.getElementById('resultado');
 formularioCalculadora.addEventListener('submit', (evento) => {
     evento.preventDefault();
 
-    // resultado.style.display = 'none';
-
-    setTimeout(calcularCalorias, 1000);
+    calcularCalorias();
 })
 
 function calcularCalorias() {
+    aparecerResultado();
+
     const edad = document.querySelector('#edad');
     const peso = document.querySelector('#peso');
     const altura = document.querySelector('#altura');
     const genero = document.querySelector('input[name="genero"]:checked');
     const actividad = document.querySelector('#actividad');
-    const totalCalorias = document.querySelector('#total-calorias');
+    // const totalCalorias = document.querySelector('#total-calorias');
 
-    const multiplicadoresTMB = {
+    const multiplicadorTMB = {
         peso: 10,
         altura: 6.25,
         edad: 5
@@ -34,26 +34,74 @@ function calcularCalorias() {
     let calculoCalorias;
     if (genero.id === 'hombre') {
         //Formula hombres: valor actividad x (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) + 5
-        calculoCalorias = actividad.value * ((multiplicadoresTMB.peso * peso.value) +
-                                             (multiplicadoresTMB.altura * altura.value) -
-                                             (multiplicadoresTMB.edad * edad.value)) + 5;
+        calculoCalorias = actividad.value * ((multiplicadorTMB.peso * peso.value) +
+                                             (multiplicadorTMB.altura * altura.value) -
+                                             (multiplicadorTMB.edad * edad.value)) + 5;
     } else {
         //Formula mujeres: valor actividad x (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) - 161
-        calculoCalorias = actividad.value * ((multiplicadoresTMB.peso * peso.value) +
-                                             (multiplicadoresTMB.altura * altura.value) -
-                                             (multiplicadoresTMB.edad * edad.value)) -161
+        calculoCalorias = actividad.value * ((multiplicadorTMB.peso * peso.value) +
+                                             (multiplicadorTMB.altura * altura.value) -
+                                             (multiplicadorTMB.edad * edad.value)) -161
     }
+    
+    // totalCalorias.value = `${Math.floor(calculoCalorias)} kcal`;
+    
+    resultado.innerHTML = `
+        <div class="card-body d-flex flex-column justify-content-center align-items-center h-100">
+            <h5 class="card-title h2">Calorías requeridas</h5>
+            <div class="mb-3 w-100">
+                <input class="form-control text-center" value="${Math.floor(calculoCalorias)} kcal" style="font-size: 2rem" disabled>
+            </div>
+        </div>
+    `
 
-    totalCalorias.value = Math.floor(calculoCalorias);
-
-    // resultado.style.display = 'block';
+    peso.value = null;
+    altura.value = null;
+    edad.value = null;
+    actividad.value = null;
 }
 
 function mostrarMensajeDeError(msg) {
-    // resultado.style.display = 'none';
 
     const divError = document.createElement('div');
-    const card = document.createElement('div');
+    divError.className = 'd-flex justify-content-center align-items-center h-100';
+    divError.innerHTML = `<span class="alert alert-danger text-center">${msg}</span>`;
 
-    console.log('hay un error!')
+    resultado.appendChild(divError);
+
+    setTimeout(() => {
+        divError.remove();
+        desvanecerResultado();
+    }, 2000);
+}
+
+
+// Animaciones
+function aparecerResultado() {
+    resultado.style.top = '100vh';
+    resultado.style.display = 'block';
+    
+    let distancia = 100;
+    let resta = 0.3;
+    let id = setInterval(() => {
+        resta *= 1.1;
+        resultado.style.top = `${distancia - resta}vh`;
+        if (resta > 100) {
+            clearInterval(id);
+        }
+    }, 10)
+}
+
+function desvanecerResultado() {
+    let distancia = 0.3;
+
+    let id = setInterval(() => {
+        distancia *= 1.1;
+        resultado.style.top = `${distancia}vh`;
+        if (distancia > 100) {
+            clearInterval(id);
+            resultado.style.display = 'none';
+            resultado.style.top = 0;
+        }
+    }, 10)
 }
