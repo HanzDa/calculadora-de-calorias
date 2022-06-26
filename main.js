@@ -47,7 +47,7 @@ function calcularCalorias() {
     // totalCalorias.value = `${Math.floor(calculoCalorias)} kcal`;
     
     resultado.innerHTML = `
-        <div class="card-body d-flex flex-column justify-content-center align-items-center h-100">
+        <div class=" card-body d-flex flex-column justify-content-center align-items-center h-100" id="calculo">
             <h5 class="card-title h2">Calorías requeridas</h5>
             <div class="mb-3 w-100">
                 <input class="form-control text-center" value="${Math.floor(calculoCalorias)} kcal" style="font-size: 2rem" disabled>
@@ -62,6 +62,10 @@ function calcularCalorias() {
 }
 
 function mostrarMensajeDeError(msg) {
+    const calculo = document.querySelector('#calculo');
+    if (calculo) {
+        calculo.remove();
+    }
 
     const divError = document.createElement('div');
     divError.className = 'd-flex justify-content-center align-items-center h-100';
