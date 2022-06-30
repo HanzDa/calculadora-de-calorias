@@ -6,7 +6,7 @@ en su día a día
 
 
 ## Reto:
-* Añadir campos de nombre, tipo documento y número de documento.
+* Añadir campos de nombre, tipo documento(+2) y número de documento.
 * Al momento de realizar el calculo el programa deberá mostrar al usuario
 un mensaje como el siguiente:
 

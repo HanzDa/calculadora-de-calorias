@@ -27,7 +27,7 @@ function calcularCalorias() {
         mostrarMensajeDeError('Por favor asegúrese de llenar todos los campos');
         return;
     } else if (edad.value < 15 || edad.value > 80) {
-        mostrarMensajeDeError('La edad ingresada no es permitida')
+        mostrarMensajeDeError('La edad ingresada no es permitida');
         return;
     }
     
@@ -76,7 +76,7 @@ function mostrarMensajeDeError(msg) {
     setTimeout(() => {
         divError.remove();
         desvanecerResultado();
-    }, 2000);
+    }, 5000);
 }
 
 
@@ -97,10 +97,10 @@ function aparecerResultado() {
 }
 
 function desvanecerResultado() {
-    let distancia = 0.3;
+    let distancia = 1;
 
     let id = setInterval(() => {
-        distancia *= 1.1;
+        distancia *= 2;
         resultado.style.top = `${distancia}vh`;
         if (distancia > 100) {
             clearInterval(id);
