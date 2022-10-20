@@ -12,7 +12,7 @@ un mensaje como el siguiente:
 
 "El paciente (nombre del paciente) identificado con (tipo de documento)
 NO.(número de documento), requiere un total de (cantidad calorías) kcal
-para el sostenimiento de su TBM"
+para el sostenimiento de su TBM" tasa metabólica basal
 
 * El programa debe informar al usuario a que grupo poblacional pertenece
 el paciente dependiendo de su edad:
