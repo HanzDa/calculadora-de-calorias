@@ -40,11 +40,6 @@ body::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.5)
 }
 
-#resultado {
-    display: none;
-}
-
-
 /* footer */
 .footer {
     background-color: #1c1e20;
